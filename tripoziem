@@ -1,0 +1,50 @@
+#include<stdio.h>
+
+int main()
+{
+    int mat[3][3];
+    int i,j;
+
+    // Input
+    for (i=0;i<3;i++)
+    {
+        for (j=0;j<3;j++)
+        {
+            scanf("%d",&mat[i][j]);
+        }
+    }
+
+    int count[3]={0};
+
+    // Count non-zero elements
+    for (i=0;i<3;i++)
+    {
+        for (j=0;j<3;j++)
+        {
+            if(mat[i][j] != 0)
+                count[i]++;
+        }
+    }
+
+    // Check trapezoid condition
+    if (count[0] > count[1] && count[1] > count[2])
+    {
+        int sum = 0;
+        for (j=0;j<3;j++)
+        {
+            sum += mat[0][j];
+        }
+        printf("%d", sum);
+    }
+    else
+    {
+        int product = 1;
+        for (j=0;j<3;j++)
+        {
+            product *= mat[0][j];
+        }
+        printf("%d", product);
+    }
+
+    return 0;
+}
